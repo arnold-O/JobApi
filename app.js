@@ -17,8 +17,8 @@ app.use(express.json());
 
 // app.use('/api/product', AuthRoutes)
 // app.use('/api/tasks', JobRoutes)
-app.use('/api/v1/job', JobRoutes)
-app.use('/api/v1/auth', authenticatedUser, AuthRoutes)
+app.use('/api/v1/job',authenticatedUser,  JobRoutes)
+app.use('/api/v1/auth', AuthRoutes)
 
 app.use(notFound)
 

@@ -16,7 +16,7 @@ exports.authenticatedUser = asyncWrapper(  async(req, res, next)=>{
 
     const payload = Jwt.verify(retrievToken, process.env.JWT_SECRET)
 
-    req.user = {userId:payload.userId, name:payload.userId}
+    req.user = {userId:payload.userId, name:payload.name}
 
 
     next()

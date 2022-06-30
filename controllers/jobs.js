@@ -29,9 +29,12 @@ exports.createJob =  asyncWrapper( async(req, res)=>{
 
 
     res.status(200).json({
-        message:"success create jobs"
+    user:req.user,
+    msg:"we live in create jobs"
     })
 })
+
+
 exports.updateJob =  asyncWrapper( async(req, res)=>{
 
 
