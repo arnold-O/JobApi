@@ -12,7 +12,7 @@ router.route('/createjob').post(createJob)
 
 router.route('/updatejob/:id').patch(updateJob)
 router.route('/delete/:id').delete(deleteJobs)
-router.route('/singlejob/:').get(getJob)
+router.route('/singlejob/:id').get(getJob)
 router.route('/').get(getAllJobs)
 
 
