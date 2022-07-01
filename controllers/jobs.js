@@ -77,15 +77,21 @@ exports.updateJob = asyncWrapper(async (req, res, next) => {
     jobUpdate,
   });
 });
-exports.deleteJobs = asyncWrapper(async (req, res) => {
+exports.deleteJobs = asyncWrapper(async (req, res, next) => {
   const {
-    body:{company, position},
     user: { userId },
     params: { id: jobId },
   } = req;
 
-  const job = await Job
+  const job = await Job.findByIdAndRemove({
+    _id:jobId,
+    createdBy:userId
+  })
+
+  if(!job){
+    return next(new AppError('no such job '), 400)
+  }
   res.status(200).json({
-    message: "success",
+    message: "job removed successfully",
   });
 });
