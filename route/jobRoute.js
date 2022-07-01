@@ -8,12 +8,10 @@ const router = express.Router()
 
 
 
-router.route('/createjob').post(createJob)
+router.route('/').post(createJob).get(getAllJobs)
 
-router.route('/updatejob/:id').patch(updateJob)
-router.route('/deletejob/:id').delete(deleteJobs)
-router.route('/singlejob/:id').get(getJob)
-router.route('/').get(getAllJobs)
+router.route('/:id').patch(updateJob).delete(deleteJobs).get(getJob)
+
 
 
 
