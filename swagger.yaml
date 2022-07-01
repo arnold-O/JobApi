@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: JOBS-APII
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://jobsapi-node.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /:
+    get:
+      tags:
+      - authFolder
+      summary: New Request
+      operationId: NewRequest
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /job/62bed36ae56d03d3c62d18da:
+    get:
+      tags:
+      - Jobs Folder
+      summary: get single job by Id
+      operationId: getsinglejobbyId
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: login user
+      operationId: loginuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginuserrequest'
+            example:
+              password: '123456'
+              email: francess@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: create User
+      operationId: createUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createUserRequest'
+            example:
+              name: johnm
+              password: '123456'
+              email: john@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /job/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The job ID.
+    get:
+      tags:
+      - Jobs
+      summary: get jobs created by user
+      operationId: getjobscreatedbyuser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    post:
+      tags:
+      - Jobs
+      summary: create job
+      operationId: createjob
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createjobrequest'
+            example:
+              company: fiverr
+              position: intern
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+ 
+    patch:
+      tags:
+      - Jobs
+      summary: update  job
+      operationId: updatejob
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateparticularjobrequest'
+            example:
+              company: gett
+              position: software developer
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+
+    delete:
+      tags:
+      - Jobs
+      summary: Delete Job
+      operationId: DeleteJob
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+components:
+  schemas:
+    loginuserrequest:
+      title: loginuserrequest
+      required:
+      - password
+      - email
+      type: object
+      properties:
+        password:
+          type: string
+        email:
+          type: string
+      example:
+        password: '123456'
+        email: francess@gmail.com
+    createUserRequest:
+      title: createUserRequest
+      required:
+      - name
+      - password
+      - email
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      example:
+        name: johnm
+        password: '123456'
+        email: john@gmail.com
+    updateparticularjobrequest:
+      title: updateparticularjobrequest
+      required:
+      - company
+      - position
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+      example:
+        company: gett
+        position: software developer
+    createjobrequest:
+      title: createjobrequest
+      required:
+      - company
+      - position
+      type: object
+      properties:
+        company:
+          type: string
+        position:
+          type: string
+      example:
+        company: fiverr
+        position: intern
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: authFolder
+- name: Jobs Folder
+- name: Auth
+  description: ''
+- name: Jobs
+  description: ''
