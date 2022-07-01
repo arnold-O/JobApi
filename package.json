@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server,js"
+    "dev": "nodemon server,js",
+    "start":"node server.js"
   },
   "author": "arnold",
   "license": "ISC",
@@ -23,5 +24,8 @@
     "mongoose": "^6.4.1",
     "validator": "^13.7.0",
     "xss-clean": "^0.1.1"
+  },
+  "engines":{
+    "node":"16.x"
   }
 }
