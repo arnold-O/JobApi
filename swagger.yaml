@@ -80,14 +80,8 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /job/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The job ID.
+  /job:
+  
     get:
       tags:
       - Jobs
